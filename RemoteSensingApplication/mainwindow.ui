@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1345</width>
+    <height>632</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>遥感数字图像处理</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>10</y>
+      <width>591</width>
+      <height>581</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>351</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTreeView" name="treeView"/>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="textEdit"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>10</y>
+      <width>361</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QComboBox" name="comboBox">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="currentText">
+        <string>选择波段</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>选择波段</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>band1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>band2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>band3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>allband</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGraphicsView" name="graphicsView_2"/>
+     </item>
+     <item>
+      <widget class="QGraphicsView" name="graphicsView_3"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1345</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>打开</string>
+    </property>
+    <addaction name="Action_OpenRaster"/>
+    <addaction name="separator"/>
+    <addaction name="Action_Exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>操作</string>
+    </property>
+    <addaction name="Action_ShowHistogram"/>
+    <addaction name="Action_ShowRaster"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>辐射处理</string>
+    </property>
+    <addaction name="action_RadiometricCalibration"/>
+    <addaction name="action_Terrain_Correction"/>
+    <addaction name="action_Atmospheric_Correction"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>影像增强</string>
+    </property>
+    <widget class="QMenu" name="menu_6">
+     <property name="title">
+      <string>傅里叶变换</string>
+     </property>
+     <widget class="QMenu" name="menu_15">
+      <property name="title">
+       <string>低通滤波</string>
+      </property>
+      <addaction name="actionli"/>
+      <addaction name="actiongauss"/>
+     </widget>
+     <addaction name="actionDFT_2"/>
+     <addaction name="menu_15"/>
+     <addaction name="action_high_pass"/>
+    </widget>
+    <widget class="QMenu" name="menu_7">
+     <property name="title">
+      <string>空间平滑</string>
+     </property>
+     <addaction name="action_Mean_Smoothing"/>
+    </widget>
+    <widget class="QMenu" name="menu_8">
+     <property name="title">
+      <string>空间锐化</string>
+     </property>
+     <addaction name="action_Sobel_Gradient"/>
+     <addaction name="action_Laplace_Gradient"/>
+    </widget>
+    <addaction name="action_Percentage_Stretch"/>
+    <addaction name="action_Histogram_Equalization"/>
+    <addaction name="menu_6"/>
+    <addaction name="menu_7"/>
+    <addaction name="menu_8"/>
+   </widget>
+   <widget class="QMenu" name="menu_9">
+    <property name="title">
+     <string>影像配准</string>
+    </property>
+    <widget class="QMenu" name="menu_10">
+     <property name="title">
+      <string>自动配准</string>
+     </property>
+     <widget class="QMenu" name="menuSIFT_2">
+      <property name="title">
+       <string>SIFT算法</string>
+      </property>
+      <addaction name="action_KeyPoints"/>
+      <addaction name="actionFLANN"/>
+     </widget>
+     <addaction name="menuSIFT_2"/>
+    </widget>
+    <addaction name="action_Rough_Georeferencing_of_UAV_Imagery"/>
+    <addaction name="action_Manual_Registration"/>
+    <addaction name="menu_10"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>影像融合</string>
+    </property>
+    <addaction name="actionBrovey"/>
+    <addaction name="actionIHS"/>
+    <addaction name="actionPCA"/>
+   </widget>
+   <widget class="QMenu" name="menu_11">
+    <property name="title">
+     <string>影像分割</string>
+    </property>
+    <addaction name="actionKmeans"/>
+    <addaction name="action_IterativeThresholdSegmentation"/>
+    <addaction name="actionOSTU"/>
+    <addaction name="actionISODATA"/>
+    <addaction name="actionhunhegaussmodel"/>
+   </widget>
+   <widget class="QMenu" name="menu_12">
+    <property name="title">
+     <string>特征提取</string>
+    </property>
+    <widget class="QMenu" name="menu_13">
+     <property name="title">
+      <string>角点检测</string>
+     </property>
+     <addaction name="actionMoravec"/>
+     <addaction name="actionHarris"/>
+    </widget>
+    <addaction name="menu_13"/>
+    <addaction name="action_LineDetection"/>
+   </widget>
+   <widget class="QMenu" name="menu_14">
+    <property name="title">
+     <string>监督分类</string>
+    </property>
+    <addaction name="actionMLC"/>
+    <addaction name="actionmindistance"/>
+   </widget>
+   <widget class="QMenu" name="menu_16">
+    <property name="title">
+     <string>综合应用</string>
+    </property>
+    <addaction name="actionNDVI"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_9"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_11"/>
+   <addaction name="menu_12"/>
+   <addaction name="menu_14"/>
+   <addaction name="menu_16"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="Action_OpenRaster">
+   <property name="text">
+    <string>文件</string>
+   </property>
+   <property name="toolTip">
+    <string>Files</string>
+   </property>
+  </action>
+  <action name="Action_Exit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="Action_ShowHistogram">
+   <property name="text">
+    <string>直方图显示</string>
+   </property>
+   <property name="toolTip">
+    <string>HistogramShow</string>
+   </property>
+  </action>
+  <action name="Action_ShowRaster">
+   <property name="text">
+    <string>显示影像</string>
+   </property>
+   <property name="toolTip">
+    <string>ShowRaster</string>
+   </property>
+  </action>
+  <action name="action_RadiometricCalibration">
+   <property name="text">
+    <string>辐射定标</string>
+   </property>
+   <property name="toolTip">
+    <string>Radiometric_Calibration</string>
+   </property>
+  </action>
+  <action name="action_Terrain_Correction">
+   <property name="text">
+    <string>地形校正</string>
+   </property>
+   <property name="toolTip">
+    <string>Terrain_Correction</string>
+   </property>
+  </action>
+  <action name="action_Atmospheric_Correction">
+   <property name="text">
+    <string>大气校正</string>
+   </property>
+   <property name="toolTip">
+    <string>Atmospheric_Correction</string>
+   </property>
+  </action>
+  <action name="action_Percentage_Stretch">
+   <property name="text">
+    <string>百分比拉伸</string>
+   </property>
+   <property name="toolTip">
+    <string>Percentage_Stretch</string>
+   </property>
+  </action>
+  <action name="action_Histogram_Equalization">
+   <property name="text">
+    <string>直方图均衡化</string>
+   </property>
+   <property name="toolTip">
+    <string>Histogram_Equalization</string>
+   </property>
+  </action>
+  <action name="actionDFT_2">
+   <property name="text">
+    <string>DFT</string>
+   </property>
+  </action>
+  <action name="actionFFT">
+   <property name="text">
+    <string>FFT</string>
+   </property>
+  </action>
+  <action name="action_Mean_Smoothing">
+   <property name="text">
+    <string>均值平滑</string>
+   </property>
+   <property name="toolTip">
+    <string>Mean_Smoothing</string>
+   </property>
+  </action>
+  <action name="action_Sobel_Gradient">
+   <property name="text">
+    <string>Sobel梯度</string>
+   </property>
+   <property name="toolTip">
+    <string>Sobel_Gradient</string>
+   </property>
+  </action>
+  <action name="action_Laplace_Gradient">
+   <property name="text">
+    <string>Laplace梯度</string>
+   </property>
+   <property name="toolTip">
+    <string>Laplace_Gradient</string>
+   </property>
+  </action>
+  <action name="action_Rough_Georeferencing_of_UAV_Imagery">
+   <property name="text">
+    <string>无人机影像粗校正</string>
+   </property>
+   <property name="toolTip">
+    <string>Rough_Georeferencing_of_UAV_Imagery</string>
+   </property>
+  </action>
+  <action name="action_Manual_Registration">
+   <property name="text">
+    <string>手动配准</string>
+   </property>
+   <property name="toolTip">
+    <string>Manual_Registration</string>
+   </property>
+  </action>
+  <action name="action_KeyPoints">
+   <property name="text">
+    <string>特征点选取</string>
+   </property>
+   <property name="toolTip">
+    <string>KeyPoints</string>
+   </property>
+  </action>
+  <action name="actionFLANN">
+   <property name="text">
+    <string>FLANN</string>
+   </property>
+  </action>
+  <action name="action_high_pass">
+   <property name="text">
+    <string>高通滤波</string>
+   </property>
+   <property name="toolTip">
+    <string>high_pass</string>
+   </property>
+  </action>
+  <action name="actionBrovey">
+   <property name="text">
+    <string>Brovey变换融合</string>
+   </property>
+  </action>
+  <action name="actionIHS">
+   <property name="text">
+    <string>IHS变换融合</string>
+   </property>
+  </action>
+  <action name="actionPCA">
+   <property name="text">
+    <string>PCA变换融合</string>
+   </property>
+  </action>
+  <action name="actionKmeans">
+   <property name="text">
+    <string>Kmeans</string>
+   </property>
+  </action>
+  <action name="actionMoravec">
+   <property name="text">
+    <string>Moravec</string>
+   </property>
+  </action>
+  <action name="actionHarris">
+   <property name="text">
+    <string>Harris</string>
+   </property>
+  </action>
+  <action name="action_LineDetection">
+   <property name="text">
+    <string>直线提取</string>
+   </property>
+   <property name="toolTip">
+    <string>LineDetection</string>
+   </property>
+  </action>
+  <action name="action_IterativeThresholdSegmentation">
+   <property name="text">
+    <string>迭代阈值分割</string>
+   </property>
+   <property name="toolTip">
+    <string>IterativeThresholdSegmentation</string>
+   </property>
+  </action>
+  <action name="actionOSTU">
+   <property name="text">
+    <string>OSTU</string>
+   </property>
+  </action>
+  <action name="actionISODATA">
+   <property name="text">
+    <string>ISODATA</string>
+   </property>
+  </action>
+  <action name="actionhunhegaussmodel">
+   <property name="text">
+    <string>混合高斯模型</string>
+   </property>
+   <property name="toolTip">
+    <string>hunhegaussmodel</string>
+   </property>
+  </action>
+  <action name="actionMLC">
+   <property name="text">
+    <string>最大似然法</string>
+   </property>
+  </action>
+  <action name="actionmindistance">
+   <property name="text">
+    <string>最小距离法</string>
+   </property>
+  </action>
+  <action name="actionli">
+   <property name="text">
+    <string>理想低通滤波器</string>
+   </property>
+  </action>
+  <action name="actiongauss">
+   <property name="text">
+    <string>高斯低通滤波器</string>
+   </property>
+  </action>
+  <action name="actionNDVI">
+   <property name="text">
+    <string>NDVI植被检测</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
